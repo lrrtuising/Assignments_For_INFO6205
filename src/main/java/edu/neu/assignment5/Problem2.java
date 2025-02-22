@@ -73,6 +73,7 @@ public class Problem2 {
         root1.right.left = new TreeNode(6);
         root1.right.right = new TreeNode(9);
 
+        System.out.println("Case 1: ");
         System.out.println("Original Tree (In-Order Traversal): ");
         solution.printTreeInOrder(root1);
 
@@ -81,6 +82,7 @@ public class Problem2 {
         System.out.println("");
         System.out.println("Rearranged Tree (In-Order Traversal): ");
         solution.printTreeInOrder(newRoot1);
+        System.out.println("");
 
         // you can also implement InOrder and LevelOrder Traversal for verification
         // purpose!!
@@ -96,6 +98,7 @@ public class Problem2 {
         root2.right.right.left = new TreeNode(7);
         root2.right.right.right = new TreeNode(9);
 
+        System.out.println("Case 2: ");
         System.out.println("Original Tree (In-Order Traversal): ");
         solution.printTreeInOrder(root2);
 
@@ -104,6 +107,6 @@ public class Problem2 {
         System.out.println("");
         System.out.println("Rearranged Tree (In-Order Traversal): ");
         solution.printTreeInOrder(newRoot2);
-
+        System.out.println("");
     }
 }
