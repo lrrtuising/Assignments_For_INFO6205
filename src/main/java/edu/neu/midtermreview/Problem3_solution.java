@@ -1,35 +1,38 @@
-package edu.neu.midternreview;/*
+package edu.neu.midtermreview;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-import java.util.ArrayList; 
-import java.util.List;
 /**
  *
  * @author Rushdi
  */
-class TreeNode {
-    int val;
-    TreeNode left, right;
-    TreeNode(int val) { this.val = val; }
-}
+//class TreeNode {
+//    int val;
+//    TreeNode left, right;
+//    TreeNode(int val) { this.val = val; }
+//}
 
-public class Problem3 {
+public class Problem3_solution {
+    private static int count = 0;
+    private static int result = 0;
     
-    // IMPLEMENT THE BELOW FUNCTION!!!
     public static int kthSmallest(TreeNode root, int k) {
-        // UPDATE RETURN STATEMENTS!!
-        List<Integer> inorder = new ArrayList<>();
-        inorderTraversal(root, inorder);
-        return inorder.get(k - 1);
+        count = k;
+        inorderTraversal(root);
+        return result;
     }
 
-    private static void inorderTraversal(TreeNode root, List<Integer> result) {
-        if (root == null) return;
-        inorderTraversal(root.left, result);
-        result.add(root.val);
-        inorderTraversal(root.right, result);
+    private static void inorderTraversal(TreeNode node) {
+        if (node == null || count == 0) return;
+        
+        inorderTraversal(node.left); // Visit left subtree
+        count--;
+        if (count == 0) {
+            result = node.val;
+            return;
+        }
+        inorderTraversal(node.right); // Visit right subtree
     }
 
     // Helper method to insert nodes into the BST

@@ -1,4 +1,4 @@
-package edu.neu.midternreview;/*
+package edu.neu.midtermreview;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -7,39 +7,38 @@ package edu.neu.midternreview;/*
  *
  * @author Rushdi
  */
-
 class ListNode {
     int val;
     ListNode next;
     ListNode(int val) { this.val = val; }
 }
-
-public class Problem2 {
+public class Problem2_solution {
     
-    
-    // IMPLEMENT THE BELOW FUNCTION
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        // UPDATE RETURN STATEMENT ALSO!!
-        ListNode dummyHead = new ListNode(0);
+        ListNode dummyHead = new ListNode(0); // Dummy head for result list
         ListNode current = dummyHead;
         int carry = 0;
-
+        
+        // Iterate while either list has elements or there is a carry
         while (l1 != null || l2 != null || carry != 0) {
-            int sum = carry;
-            if (l1 != null) {
-                sum += l1.val;
-                l1 = l1.next;
-            }
-            if (l2 != null) {
-                sum += l2.val;
-                l2 = l2.next;
-            }
-            carry = sum / 10;
-            current.next = new ListNode(sum % 10);
-            current = current.next;
+            int sum = carry; // Start with carry from previous iteration
             
+            if (l1 != null) {
+                sum += l1.val; // Add l1's value
+                l1 = l1.next; // Move to next node
+            }
+            
+            if (l2 != null) {
+                sum += l2.val; // Add l2's value
+                l2 = l2.next; // Move to next node
+            }
+            
+            carry = sum / 10; // Compute carry for next iteration
+            current.next = new ListNode(sum % 10); // Store last digit in new node
+            current = current.next;
         }
-        return dummyHead.next;
+        
+        return dummyHead.next; // Return result list, skipping dummy head
     }
 
     // Helper method to create linked list from array
