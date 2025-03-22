@@ -1,33 +1,38 @@
-package edu.neu.assignment6;/*
+package edu.neu.assignment6.solution;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
 /**
  *
- * @author 
+ * @author purvamsheth
  */
+
 import java.util.*;
 
 public class Problem1 {
-    
-    // Implement the below function!!!
     public List<List<String>> groupAnagrams(String[] strs) {
-        //
+        // Create a map to store lists of anagrams
         Map<String, List<String>> map = new HashMap<>();
 
-        for(String str: strs){
+        // Iterate through each string in the input array
+        for (String str : strs) {
+            // Convert the string to a character array, then sort it
             char[] charArray = str.toCharArray();
             Arrays.sort(charArray);
+            // Convert the sorted character array back to a string (key)
             String sortedStr = new String(charArray);
 
-            if(!map.containsKey(sortedStr)){
+            // If the key does not exist in the map, create a new list
+            if (!map.containsKey(sortedStr)) {
                 map.put(sortedStr, new ArrayList<>());
             }
+            // Add the original string to the list corresponding to the sorted key
             map.get(sortedStr).add(str);
-
         }
-        return new ArrayList<>(map.values()); // update return type as well!
+
+        // Return all grouped anagrams
+        return new ArrayList<>(map.values());
     }
 
     public static void main(String[] args) {
